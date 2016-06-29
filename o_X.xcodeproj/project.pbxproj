@@ -12,6 +12,7 @@
 		02F782CB1D22966600E3BC29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F782C91D22966600E3BC29 /* Main.storyboard */; };
 		02F782CD1D22966600E3BC29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F782CC1D22966600E3BC29 /* Assets.xcassets */; };
 		02F782D01D22966600E3BC29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */; };
+		652F64FB1D23FF1800FF03C7 /* OXGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F64FA1D23FF1800FF03C7 /* OXGameController.swift */; };
 		656493211D23D05D00EE1EF6 /* OXGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656493201D23D05D00EE1EF6 /* OXGame.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		02F782CC1D22966600E3BC29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02F782CF1D22966600E3BC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02F782D11D22966600E3BC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652F64FA1D23FF1800FF03C7 /* OXGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGameController.swift; sourceTree = "<group>"; };
 		656493201D23D05D00EE1EF6 /* OXGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				02F782CC1D22966600E3BC29 /* Assets.xcassets */,
 				02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */,
 				02F782D11D22966600E3BC29 /* Info.plist */,
+				652F64FA1D23FF1800FF03C7 /* OXGameController.swift */,
 			);
 			path = o_X;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			files = (
 				02F782C81D22966600E3BC29 /* BoardViewController.swift in Sources */,
 				656493211D23D05D00EE1EF6 /* OXGame.swift in Sources */,
+				652F64FB1D23FF1800FF03C7 /* OXGameController.swift in Sources */,
 				02F782C61D22966600E3BC29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

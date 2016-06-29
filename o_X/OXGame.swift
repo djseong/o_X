@@ -34,9 +34,17 @@ class OXGame {
         turn += 1
         return turntype;
     }
-    
+
     func gameWon () -> Bool {
-        if ((board[0], board[1]) == (board[1],board[2]) || (board[0],board[3]) == (board[3], board[6]) || (board[0], board[4]) == (board[4], board[8]) || (board[4],board[3]) == (board[3], board[6]) || (board[4], board[6]) == (board[2], board[6]) || (board[4], board[1]) == (board[7], board[1]) || (board[2], board[5]) == (board[8], board[5]) || (board[8], board[7]) == (board[6], board[7]))
+        print (self.board);
+        if ((board[0], board[1]) == (board[1],board[2]) && board[0] != CellType.Empty
+            || (board[0],board[3]) == (board[3], board[6]) && board[0] != CellType.Empty
+            || (board[0], board[4]) == (board[4], board[8]) && board[0] != CellType.Empty
+            || (board[4],board[3]) == (board[3], board[5]) && board[4] != CellType.Empty
+            || (board[4], board[6]) == (board[6], board[2]) && board[4] != CellType.Empty
+            || (board[4], board[1]) == (board[1], board[7]) && board[4] != CellType.Empty
+            || (board[2], board[5]) == (board[5], board[8]) && board[2] != CellType.Empty
+            || (board[8], board[7]) == (board[7], board[6]) && board[8] != CellType.Empty)
         {
             return true
         }

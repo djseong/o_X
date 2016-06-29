@@ -17,6 +17,8 @@ class BoardViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    var gameObject = OXGame() 
+    
     @IBAction func newGameButtonPressed(sender: UIButton) {
         print ("New game button pressed")
     }

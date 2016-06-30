@@ -9,7 +9,7 @@
 import Foundation
 
 class OXGame {
-    private var board = [CellType.Empty,CellType.Empty,CellType.Empty,CellType.Empty,CellType.Empty,CellType.Empty,CellType.Empty,CellType.Empty,CellType.Empty]
+    private var board = [CellType](count:9, repeatedValue: CellType.Empty)
     private var startType = CellType.X
     var turn = 0
     var turntype = CellType.X
@@ -19,20 +19,21 @@ class OXGame {
     }
     
     func whoseTurn ()-> CellType {
+        return turntype
+    }
+    
+    func playMove(x:Int){
+        if (self.state() == OXGameState.InProgress) {
+            board[x] = turntype
+            turn += 1
+        
         if (self.turntype == CellType.X) {
             self.turntype = CellType.O
-            return CellType.X
         }
         else {
             self.turntype = CellType.X
-            return CellType.O
         }
-    }
-    
-    func playMove(x:Int) -> CellType {
-        board[x] = turntype
-        turn += 1
-        return turntype;
+        }
     }
 
     func gameWon () -> Bool {

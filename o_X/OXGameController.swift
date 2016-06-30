@@ -17,7 +17,7 @@ class OXGameController: NSObject {
     func restartGame(){
         currentgame.reset()
     }
-    func playMove(x:Int) -> CellType {
-        return currentgame.playMove(x)
+    func playMove(x:Int) {
+        currentgame.playMove(x)
     }
 }

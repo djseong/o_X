@@ -12,6 +12,7 @@
 		02F782CB1D22966600E3BC29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F782C91D22966600E3BC29 /* Main.storyboard */; };
 		02F782CD1D22966600E3BC29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02F782CC1D22966600E3BC29 /* Assets.xcassets */; };
 		02F782D01D22966600E3BC29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */; };
+		6526ABE91D2AAF9C00F7AF70 /* NetworkGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526ABE81D2AAF9C00F7AF70 /* NetworkGamesViewController.swift */; };
 		652F64FB1D23FF1800FF03C7 /* OXGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F64FA1D23FF1800FF03C7 /* OXGameController.swift */; };
 		652F653B1D25655300FF03C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F653A1D25655300FF03C7 /* User.swift */; };
 		652F653D1D25659E00FF03C7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F653C1D25659E00FF03C7 /* UserController.swift */; };
@@ -29,6 +30,7 @@
 		02F782CC1D22966600E3BC29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02F782CF1D22966600E3BC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02F782D11D22966600E3BC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6526ABE81D2AAF9C00F7AF70 /* NetworkGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkGamesViewController.swift; sourceTree = "<group>"; };
 		652F64FA1D23FF1800FF03C7 /* OXGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXGameController.swift; sourceTree = "<group>"; };
 		652F653A1D25655300FF03C7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		652F653C1D25659E00FF03C7 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -68,20 +70,45 @@
 		02F782C41D22966600E3BC29 /* o_X */ = {
 			isa = PBXGroup;
 			children = (
+				6526ABE71D2AAF5300F7AF70 /* Storyboard */,
+				6526ABE61D2AAF4500F7AF70 /* Model Controller */,
+				6526ABE51D2AAF2800F7AF70 /* Controller */,
 				6564931F1D23D03000EE1EF6 /* Model */,
 				02F782C51D22966600E3BC29 /* AppDelegate.swift */,
-				02F782C71D22966600E3BC29 /* BoardViewController.swift */,
-				02F782C91D22966600E3BC29 /* Main.storyboard */,
-				652F653E1D25717800FF03C7 /* Onboarding.storyboard */,
 				02F782CC1D22966600E3BC29 /* Assets.xcassets */,
-				02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */,
 				02F782D11D22966600E3BC29 /* Info.plist */,
-				652F64FA1D23FF1800FF03C7 /* OXGameController.swift */,
+			);
+			path = o_X;
+			sourceTree = "<group>";
+		};
+		6526ABE51D2AAF2800F7AF70 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				02F782C71D22966600E3BC29 /* BoardViewController.swift */,
 				652F653C1D25659E00FF03C7 /* UserController.swift */,
 				652F65401D25751200FF03C7 /* RegisterViewController.swift */,
 				652F65421D25752200FF03C7 /* LoginViewController.swift */,
+				6526ABE81D2AAF9C00F7AF70 /* NetworkGamesViewController.swift */,
 			);
-			path = o_X;
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6526ABE61D2AAF4500F7AF70 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				652F64FA1D23FF1800FF03C7 /* OXGameController.swift */,
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
+		6526ABE71D2AAF5300F7AF70 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				02F782CE1D22966600E3BC29 /* LaunchScreen.storyboard */,
+				652F653E1D25717800FF03C7 /* Onboarding.storyboard */,
+				02F782C91D22966600E3BC29 /* Main.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 		6564931F1D23D03000EE1EF6 /* Model */ = {
@@ -172,6 +199,7 @@
 				656493211D23D05D00EE1EF6 /* OXGame.swift in Sources */,
 				652F65431D25752200FF03C7 /* LoginViewController.swift in Sources */,
 				652F64FB1D23FF1800FF03C7 /* OXGameController.swift in Sources */,
+				6526ABE91D2AAF9C00F7AF70 /* NetworkGamesViewController.swift in Sources */,
 				652F653B1D25655300FF03C7 /* User.swift in Sources */,
 				02F782C61D22966600E3BC29 /* AppDelegate.swift in Sources */,
 			);
@@ -290,7 +318,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = o_X/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.iX.o-X";
+				PRODUCT_BUNDLE_IDENTIFIER = "Seong-o-X";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -304,7 +332,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = o_X/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.iX.o-X";
+				PRODUCT_BUNDLE_IDENTIFIER = "Seong-o-X";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -258,12 +258,23 @@
                                     <action selector="newGameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XfU-gb-rVq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-yn-XNb">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Network">
+                                    <color key="titleColor" red="1" green="0.16686822233399923" blue="0.90743108347891044" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.23257320368582435" blue="0.95927360426998176" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Yz2-ea-T2y" kind="presentation" id="atd-8D-l66"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.41014006479999998" green="1" blue="0.30739674760000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ew7-aX-WdX" secondAttribute="bottom" id="5Rn-eH-PBH"/>
                             <constraint firstAttribute="trailing" secondItem="ml8-dc-Znn" secondAttribute="trailing" id="6qG-w1-teS"/>
                             <constraint firstItem="SU1-Qu-Wvn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9kE-gC-NzV"/>
+                            <constraint firstItem="Vca-yn-XNb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="127" id="DBm-q7-7cM"/>
                             <constraint firstItem="JSL-b1-97S" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-1" id="DTt-6t-gxJ"/>
                             <constraint firstItem="ew7-aX-WdX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FeV-7i-Gr9"/>
                             <constraint firstItem="SU1-Qu-Wvn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GH6-uW-RVC"/>
@@ -272,35 +283,45 @@
                             <constraint firstItem="SU1-Qu-Wvn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="SVz-mZ-Wcm"/>
                             <constraint firstItem="ml8-dc-Znn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="bhK-cM-LFV"/>
                             <constraint firstItem="JSL-b1-97S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hDR-Wu-jNG"/>
+                            <constraint firstItem="Vca-yn-XNb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-301" id="kRs-2r-adh"/>
                             <constraint firstItem="SU1-Qu-Wvn" firstAttribute="top" secondItem="ml8-dc-Znn" secondAttribute="bottom" constant="20" id="nU7-xq-pTG"/>
                             <constraint firstItem="ml8-dc-Znn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vvq-4D-N8n"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Vca-yn-XNb"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="S8x-le-gZo"/>
                                 <exclude reference="9kE-gC-NzV"/>
                                 <exclude reference="SVz-mZ-Wcm"/>
                                 <exclude reference="nU7-xq-pTG"/>
-                                <exclude reference="S8x-le-gZo"/>
+                                <exclude reference="DBm-q7-7cM"/>
+                                <exclude reference="kRs-2r-adh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="nU7-xq-pTG"/>
                                 <include reference="S8x-le-gZo"/>
+                                <include reference="nU7-xq-pTG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ew7-aX-WdX"/>
+                                <include reference="Vca-yn-XNb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="FeV-7i-Gr9"/>
-                                <include reference="Kp3-VZ-7ZG"/>
                                 <include reference="9kE-gC-NzV"/>
                                 <include reference="SVz-mZ-Wcm"/>
+                                <include reference="DBm-q7-7cM"/>
+                                <include reference="kRs-2r-adh"/>
+                                <include reference="FeV-7i-Gr9"/>
+                                <include reference="Kp3-VZ-7ZG"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="HKm-Wu-3LI"/>
                     <connections>
                         <outlet property="boardView" destination="SU1-Qu-Wvn" id="jVM-wT-4VP"/>
                         <outlet property="newGameButton" destination="ew7-aX-WdX" id="7fC-jH-r0q"/>
@@ -308,7 +329,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="358.5"/>
+            <point key="canvasLocation" x="-76.5" y="213"/>
+        </scene>
+        <!--Back-->
+        <scene sceneID="EA8-tR-x5g">
+            <objects>
+                <tableViewController id="9ik-IP-IUQ" customClass="NetworkGamesViewController" customModule="o_X" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T80-HO-WTd">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="efy-SH-iK3">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="efy-SH-iK3" id="UtF-bO-ZdS">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9ik-IP-IUQ" id="yDz-wa-sqd"/>
+                            <outlet property="delegate" destination="9ik-IP-IUQ" id="6zQ-Bb-qPA"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Back" id="0K0-18-foN">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="b3H-Gz-jn9">
+                            <connections>
+                                <action selector="backbuttonpressed:" destination="9ik-IP-IUQ" id="3tr-gM-2W0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableview" destination="T80-HO-WTd" id="ksW-J0-3qd"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2I-gx-0OS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="16.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8FZ-38-M00">
+            <objects>
+                <navigationController id="Yz2-ea-T2y" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Km-wa-a0O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9ik-IP-IUQ" kind="relationship" relationship="rootViewController" id="Oz7-My-7Bw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxy-Ac-fi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="756" y="16.5"/>
         </scene>
     </scenes>
 </document>

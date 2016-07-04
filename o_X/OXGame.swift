@@ -9,13 +9,12 @@
 import Foundation
 
 class OXGame{
-    private var board = [CellType](count:9, repeatedValue: CellType.Empty)
+    var board = [CellType](count:9, repeatedValue: CellType.Empty)
     private var startType = CellType.X
     var turn = 0
     var turntype = CellType.X
     
     init()  {
-        print(1)
         //we are simulating setting our board from the internet
         let simulatedBoardStringFromNetwork = "o________" //update this string to different values to test your model serialisation
         self.board = deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
@@ -139,5 +138,7 @@ enum OXGameState {
     case InProgress
     case Tie
     case Won
+    case open
+    case abandoned
     
 }

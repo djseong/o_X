@@ -49,6 +49,7 @@ class NetworkGamesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("presing button")
+        performSegueWithIdentifier("boardnetwork", sender: nil)
     }
 
     @IBAction func backbuttonpressed(sender: UIBarButtonItem) {
@@ -60,6 +61,11 @@ class NetworkGamesViewController: UITableViewController {
         
         cell.textLabel?.text = String(data[indexPath.row])
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController as! BoardViewController
+        controller.networkmode = true
     }
     
 

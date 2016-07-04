@@ -7,14 +7,20 @@ import UIKit
 
 class BoardViewController: UIViewController {
 
+    @IBOutlet weak var networklabel: UILabel!
     @IBOutlet weak var boardView: UIView!
-    @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var newGameButton: UIButton?
+    var networkmode: Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.newGameButton.hidden = true
+        self.newGameButton?.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
+        updateUI()
+        if networkmode == true {
+            self.networklabel.text = "In progress"
+        }
     }
     
     var gameObject = OXGame() 
@@ -22,7 +28,7 @@ class BoardViewController: UIViewController {
     @IBAction func newGameButtonPressed(sender: UIButton) {
         print ("New game button pressed")
         restart()
-        self.newGameButton.hidden = true
+        self.newGameButton?.hidden = true
         
     }
     
@@ -45,12 +51,17 @@ class BoardViewController: UIViewController {
         var gstate = OXGameController.sharedInstance.getCurrentGame().state()
         if (gstate == OXGameState.Won)
         {
-            var winnerstring = String(OXGameController.sharedInstance.getCurrentGame().whoseTurn()) + " Won"
-            print("winner")
-            let alert = UIAlertController(title: "Game Over", message: winnerstring, preferredStyle: UIAlertControllerStyle.Alert)
+            var winner = ""
+            if OXGameController.sharedInstance.getCurrentGame().turntype == CellType.X {
+                winner = "O"
+            }
+            else {
+                winner = "X"
+            }
+            let alert = UIAlertController(title: "Game Over", message: winner + " Won", preferredStyle: UIAlertControllerStyle.Alert)
             
             let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: {(action) in
-                self.newGameButton.hidden = false
+                self.newGameButton?.hidden = false
                 
             })
             alert.addAction(alertAction)
@@ -68,7 +79,7 @@ class BoardViewController: UIViewController {
             let alert = UIAlertController(title: "Game Over", message: "Tie", preferredStyle: UIAlertControllerStyle.Alert)
             
             let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: {(action) in
-                self.newGameButton.hidden = false
+                self.newGameButton?.hidden = false
                 
             })
             alert.addAction(alertAction)
@@ -79,6 +90,23 @@ class BoardViewController: UIViewController {
                     button.enabled = false
                 }
             }
+        }
+    }
+    
+    func updateUI() {
+        var board = OXGameController.sharedInstance.getCurrentGame().board
+        print(board)
+        for cell in 0...8 {
+            if board[cell] == CellType.X {
+                if let button = self.view.viewWithTag(cell+1) as? UIButton {
+                    button.setTitle("X", forState: .Normal)
+                    button.enabled = false
+            }}
+            else if board[cell] == CellType.O {
+                if let button = self.view.viewWithTag(cell+1) as? UIButton {
+                    button.setTitle("O", forState: .Normal)
+                    button.enabled = false
+                }}
         }
     }
 

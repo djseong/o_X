@@ -11,12 +11,11 @@ import Foundation
 class OXGame{
     var board = [CellType](count:9, repeatedValue: CellType.Empty)
     private var startType = CellType.X
-    var turn = 0
     var turntype = CellType.X
     
     init()  {
         //we are simulating setting our board from the internet
-        let simulatedBoardStringFromNetwork = "o________" //update this string to different values to test your model serialisation
+        let simulatedBoardStringFromNetwork = "_________" //update this string to different values to test your model serialisation
         self.board = deserialiseBoard(simulatedBoardStringFromNetwork) //your OXGame board model should get set here
         if(simulatedBoardStringFromNetwork == serialiseBoard())    {
             print("start\n------------------------------------")
@@ -67,6 +66,12 @@ class OXGame{
     }
     
     func turnCount () -> Int {
+        var turn = 0
+        for cell in board {
+            if cell != CellType.Empty {
+                turn += 1
+            }
+        }
         return turn;
     }
     
@@ -85,7 +90,6 @@ class OXGame{
     func playMove(x:Int){
         if (self.state() == OXGameState.InProgress) {
             board[x] = turntype
-            turn += 1
         }
     }
 
@@ -121,7 +125,6 @@ class OXGame{
     }
     
     func reset() {
-        turn = 0;
         board = [CellType](count:9, repeatedValue: CellType.Empty)
         turntype = CellType.X
     }

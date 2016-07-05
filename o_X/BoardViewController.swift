@@ -16,7 +16,6 @@ class BoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.newGameButton?.hidden = true
-        // Do any additional setup after loading the view, typically from a nib.
         updateUI()
         if networkmode == true {
             self.networklabel.text = "In progress"
@@ -45,75 +44,50 @@ class BoardViewController: UIViewController {
 
     @IBAction func ButtonPressed(sender: UIButton) {
         OXGameController.sharedInstance.playMove(sender.tag - 1)
-        var buttontype =  String(OXGameController.sharedInstance.getCurrentGame().whoseTurn())
+        let buttontype =  String(OXGameController.sharedInstance.getCurrentGame().whoseTurn())
         sender.setTitle(buttontype, forState: UIControlState.Normal)
         sender.enabled = false
-        var gstate = OXGameController.sharedInstance.getCurrentGame().state()
+        let gstate = OXGameController.sharedInstance.getCurrentGame().state()
+        
+        if (gstate == OXGameState.InProgress) {
+            return
+        }
+        
+        var message = ""
         if (gstate == OXGameState.Won)
         {
-            var winner = ""
-            if OXGameController.sharedInstance.getCurrentGame().turntype == CellType.X {
-                winner = "O"
-            }
-            else {
-                winner = "X"
-            }
-            let alert = UIAlertController(title: "Game Over", message: winner + " Won", preferredStyle: UIAlertControllerStyle.Alert)
-            
+            message = buttontype + " Won"
+        }
+        else {
+            message = "Tie"
+        }
+            let alert = UIAlertController(title: "Game Over", message: message, preferredStyle: UIAlertControllerStyle.Alert)
             let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: {(action) in
-                self.newGameButton?.hidden = false
-                
-            })
+                self.newGameButton?.hidden = false })
             alert.addAction(alertAction)
             self.presentViewController(alert, animated: true, completion: nil)
-            
             for subview in boardView.subviews {
                 if let button = subview as? UIButton {
                     button.enabled = false
                 }
             }
-        }
-        else if (gstate == OXGameState.Tie)
-        {
-            print("tie")
-            let alert = UIAlertController(title: "Game Over", message: "Tie", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let alertAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: {(action) in
-                self.newGameButton?.hidden = false
-                
-            })
-            alert.addAction(alertAction)
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-            for subview in boardView.subviews {
-                if let button = subview as? UIButton {
-                    button.enabled = false
-                }
-            }
-        }
     }
     
     func updateUI() {
         var board = OXGameController.sharedInstance.getCurrentGame().board
         print(board)
         for cell in 0...8 {
-            if board[cell] == CellType.X {
-                if let button = self.view.viewWithTag(cell+1) as? UIButton {
-                    button.setTitle("X", forState: .Normal)
+            if board[cell] != CellType.Empty {
+                if let button = self.view.viewWithTag(cell + 1) as? UIButton {
+                    button.setTitle(board[cell].rawValue, forState: .Normal)
                     button.enabled = false
-            }}
-            else if board[cell] == CellType.O {
-                if let button = self.view.viewWithTag(cell+1) as? UIButton {
-                    button.setTitle("O", forState: .Normal)
-                    button.enabled = false
-                }}
+                }
+            }
         }
     }
 
     
-    @IBAction func logoutaction(sender: UIButton) {
-        print ("Logout button pressed.")
-        
+    @IBAction func logoutaction(sender: UIButton) {        
             let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
             //Get the root view controller of the other storyboard object
             let viewController = storyboard.instantiateInitialViewController()

@@ -48,7 +48,6 @@ class NetworkGamesViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("presing button")
         performSegueWithIdentifier("boardnetwork", sender: nil)
     }
 

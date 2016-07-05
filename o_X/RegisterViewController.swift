@@ -21,7 +21,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         emailtextfield.delegate = self
         passwordtextfield.delegate = self
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,12 +40,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func registerbuttonpressed(sender: UIButton) {
         UserController.sharedInstance.register(self.emailtextfield.text!, password: self.passwordtextfield.text!, onCompletion: {(u, s) in if ((s) != nil) {
-                print ("error registering")
                 let alert = UIAlertController(title: "Error", message: s! , preferredStyle: UIAlertControllerStyle.Alert)
                 let alertAction = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
                 alert.addAction(alertAction)
                 self.presentViewController(alert, animated: true, completion: nil)
-
             }
             else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -4,6 +4,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,13 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let email:String = defaults.objectForKey("currentuseremail") as? String {
             if let password:String = defaults.objectForKey("currentuserpassword") as? String {
-                UserController.sharedInstance.register(email, password: password, onCompletion: {(u, s) in
+                UserController.sharedInstance.login(email: email, password: password, onCompletion: {(u, s) in
                     if (s) == nil {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     //Get the root view controller of the other storyboard object
                     let viewController = storyboard.instantiateInitialViewController()
-                    //Get the application object
-                    //Set the rootViewController of the window to the rootViewController of the other storyboard
                     self.window?.rootViewController = viewController
                     }
                 })

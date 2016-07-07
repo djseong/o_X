@@ -12,7 +12,7 @@ class NetworkGamesViewController: UITableViewController {
     
     @IBOutlet var tableview: UITableView!
     
-    private var data = []
+    private var games = [OXGame]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,33 +22,61 @@ class NetworkGamesViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        OXGameController.sharedInstance.getGames(onCompletion: {(d, string) in
-            self.data = [string!, OXGameController.sharedInstance.host, OXGameController.sharedInstance.ID]
-        })
+       
+       
         
         tableview.delegate = self
         tableview.dataSource = self
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        OXGameController.sharedInstance.getGames(onCompletion: {(games, error) in
+            if let game = games {
+                self.games = game
+                self.tableview.reloadData()
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: error , preferredStyle: UIAlertControllerStyle.Alert)
+                let alertAction = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
+                alert.addAction(alertAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            // self.data = [string!, OXGameController.sharedInstance.host, OXGameController.sharedInstance.ID]
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func creategamebuttonpressed(sender: UIBarButtonItem) {
+        OXGameController.sharedInstance.createNewGame { (game, error) in
+            if error == nil {
+                self.performSegueWithIdentifier("boardnetwork", sender: nil)
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1   }
+        return 1
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return games.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("boardnetwork", sender: nil)
+        OXGameController.sharedInstance.joingame(games[indexPath.row].ID) { (game, error) in
+            if error == nil {
+                self.performSegueWithIdentifier("boardnetwork", sender: nil)
+            }
+        }
     }
 
     @IBAction func backbuttonpressed(sender: UIBarButtonItem) {
@@ -58,7 +86,7 @@ class NetworkGamesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath)
         
-        cell.textLabel?.text = String(data[indexPath.row])
+        cell.textLabel?.text = "Game \(games[indexPath.row].ID) @ \(games[indexPath.row].host)"
         return cell
     }
     
@@ -66,7 +94,7 @@ class NetworkGamesViewController: UITableViewController {
         let controller = segue.destinationViewController as! BoardViewController
         controller.networkmode = true
     }
-    
+ 
 
     /*
     // Override to support conditional editing of the table view.

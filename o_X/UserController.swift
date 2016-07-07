@@ -7,15 +7,42 @@
 //
 
 import UIKit
+import Alamofire
 
-class UserController {
+class UserController: WebService {
+    
     static var sharedInstance = UserController()
     var currentUser: User?
     private var users: [User] = []
     
     func register(email: String, password: String, onCompletion: (User?, String?) -> Void) {
+        let user = ["email": email, "password": password]
         
-        if (password.characters.count < 6) {
+        let request = self.createMutableAnonRequest(NSURL(string: "https://ox-backend.herokuapp.com/auth"), method: "POST", parameters: user)
+        
+        self.executeRequest(request) { (responseCode, json) in
+            print(json)
+            
+            if responseCode / 100 == 2 {
+                //let t = json["data"]["email"].stringValue
+                var user2 = User(email: json["data"]["email"].stringValue, password: "not given", token: json["data"]["token"].stringValue, client: json["data"]["client"].stringValue)
+                self.currentUser = user2
+                
+                onCompletion(user2, nil)
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(email, forKey: "currentuseremail")
+                defaults.setObject(password, forKey: "currentuserpassword")
+                defaults.synchronize()
+            }
+            else {
+                let errorMessage = json["errors"]["full_messages"][0].stringValue
+                //execute the closure in the ViewController
+                onCompletion(nil,errorMessage)
+            }
+        }
+        
+        /*if (password.characters.count < 6) {
             onCompletion(nil, "Password is less than 6 characters long.")
             return
         }
@@ -27,17 +54,33 @@ class UserController {
 
         currentUser = User(email: email, password: password)
         onCompletion(currentUser!, nil)
-        users.append(currentUser!)
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(email, forKey: "currentuseremail")
-        defaults.setObject(password, forKey: "currentuserpassword")
-        defaults.synchronize()
+        users.append(currentUser!)*/
+       
 
     }
     
     func login (email email: String, password: String, onCompletion: (User?, String?) -> Void) {
         
-        for user in users {
+        let user = ["email": email, "password": password]
+         let request = self.createMutableAnonRequest(NSURL(string: "https://ox-backend.herokuapp.com/auth/sign_in"), method: "POST", parameters: user)
+        self.executeRequest(request) { (responseCode, json) in
+            if responseCode / 100 == 2 {
+                var user2 = User(email: json["data"]["email"].stringValue, password: "not given", token: json["data"]["token"].stringValue, client: json["data"]["client"].stringValue)
+                self.currentUser = user2
+                onCompletion(user2, nil)
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(email, forKey: "currentuseremail")
+                defaults.setObject(password, forKey: "currentuserpassword")
+                defaults.synchronize()
+            }
+            else {
+                let errorMessage = json["errors"]["full_messages"][0].stringValue
+                //execute the closure in the ViewController
+                onCompletion(nil,errorMessage)
+            }
+        }
+        
+        /*for user in users {
             if user.email == email && user.password == password {
                 onCompletion(user, nil)
                 currentUser = user
@@ -49,7 +92,7 @@ class UserController {
             }
         }
         
-        onCompletion(nil, "wrong username and password")
+        onCompletion(nil, "wrong username and password")*/
         
     }
     func logout(onCompletion onCompletion: (String?) -> Void) {

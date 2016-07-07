@@ -328,18 +328,18 @@
                                 <exclude reference="Vca-yn-XNb"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="S8x-le-gZo"/>
+                                <exclude reference="DBm-q7-7cM"/>
+                                <exclude reference="kRs-2r-adh"/>
                                 <exclude reference="9kE-gC-NzV"/>
                                 <exclude reference="SVz-mZ-Wcm"/>
                                 <exclude reference="nU7-xq-pTG"/>
-                                <exclude reference="DBm-q7-7cM"/>
-                                <exclude reference="kRs-2r-adh"/>
+                                <exclude reference="S8x-le-gZo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="S8x-le-gZo"/>
                                 <include reference="nU7-xq-pTG"/>
+                                <include reference="S8x-le-gZo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -348,12 +348,12 @@
                                 <include reference="Vca-yn-XNb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="9kE-gC-NzV"/>
-                                <include reference="SVz-mZ-Wcm"/>
                                 <include reference="DBm-q7-7cM"/>
                                 <include reference="kRs-2r-adh"/>
                                 <include reference="FeV-7i-Gr9"/>
                                 <include reference="Kp3-VZ-7ZG"/>
+                                <include reference="9kE-gC-NzV"/>
+                                <include reference="SVz-mZ-Wcm"/>
                             </mask>
                         </variation>
                     </view>
@@ -372,12 +372,15 @@
             <objects>
                 <tableViewController id="9ik-IP-IUQ" customClass="NetworkGamesViewController" customModule="o_X" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="T80-HO-WTd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="efy-SH-iK3">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="efy-SH-iK3" id="UtF-bO-ZdS">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -394,7 +397,11 @@
                                 <action selector="backbuttonpressed:" destination="9ik-IP-IUQ" id="3tr-gM-2W0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="XCo-bX-K9N"/>
+                        <barButtonItem key="rightBarButtonItem" title="Create Game" id="XCo-bX-K9N">
+                            <connections>
+                                <action selector="creategamebuttonpressed:" destination="9ik-IP-IUQ" id="vzb-BT-kqo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -439,9 +446,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.86802568550000003" green="0.19079023470000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="186" y="19" width="28" height="21"/>
-                                </variation>
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKZ-uY-cQr" userLabel="board">
                                 <rect key="frame" x="20" y="119" width="560" height="362"/>
@@ -655,8 +659,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="kwA-s5-W68"/>
                                         <exclude reference="M6E-cV-iA7"/>
+                                        <exclude reference="kwA-s5-W68"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -666,8 +670,8 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <exclude reference="UXf-0M-neC"/>
                                         <include reference="M6E-cV-iA7"/>
+                                        <exclude reference="UXf-0M-neC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -678,27 +682,66 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGT-gN-R1s">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOQ-kM-SXe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshbuttonpressed:" destination="Drl-8A-hTS" eventType="touchUpInside" id="nBP-NN-w6w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMk-sf-hH2">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Cancel game">
+                                    <color key="titleColor" red="1" green="0.16686822230000001" blue="0.90743108350000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelbuttonpressed:" destination="Drl-8A-hTS" eventType="touchUpInside" id="AoM-YJ-M6a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.41014006479999998" green="1" blue="0.30739674760000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="oKZ-uY-cQr" firstAttribute="centerX" secondItem="zbH-DV-OYT" secondAttribute="centerX" id="24E-T7-oiT"/>
+                            <constraint firstItem="HMk-sf-hH2" firstAttribute="top" secondItem="a4y-Zb-9Yj" secondAttribute="bottom" constant="9" id="7OC-c3-nhV"/>
                             <constraint firstItem="oKZ-uY-cQr" firstAttribute="centerY" secondItem="zbH-DV-OYT" secondAttribute="centerY" id="8Zr-A0-Vkf"/>
+                            <constraint firstItem="eGT-gN-R1s" firstAttribute="top" secondItem="zbH-DV-OYT" secondAttribute="top" constant="100" id="El5-MD-zVp"/>
+                            <constraint firstAttribute="trailing" secondItem="AOQ-kM-SXe" secondAttribute="trailing" constant="30" id="KtH-xN-m1X"/>
                             <constraint firstItem="9iw-gy-o6i" firstAttribute="centerX" secondItem="zbH-DV-OYT" secondAttribute="centerX" id="NpK-KZ-qQM"/>
+                            <constraint firstItem="AOQ-kM-SXe" firstAttribute="top" secondItem="zbH-DV-OYT" secondAttribute="top" constant="59" id="QFw-1X-ZKO"/>
                             <constraint firstAttribute="trailing" secondItem="Cm8-Lr-PZb" secondAttribute="trailing" id="QJ1-Q9-00A"/>
                             <constraint firstItem="Cm8-Lr-PZb" firstAttribute="leading" secondItem="zbH-DV-OYT" secondAttribute="leading" id="RhI-Jv-nfc"/>
                             <constraint firstItem="9iw-gy-o6i" firstAttribute="top" secondItem="zbH-DV-OYT" secondAttribute="topMargin" constant="6" id="S6E-4e-I63"/>
                             <constraint firstAttribute="bottom" secondItem="Cm8-Lr-PZb" secondAttribute="bottom" id="SWR-PY-HF9"/>
                             <constraint firstItem="oKZ-uY-cQr" firstAttribute="leading" secondItem="zbH-DV-OYT" secondAttribute="leading" constant="20" id="WqY-Ja-O0Y"/>
+                            <constraint firstItem="eGT-gN-R1s" firstAttribute="centerX" secondItem="zbH-DV-OYT" secondAttribute="centerX" id="gA5-6J-5lL"/>
                             <constraint firstItem="9iw-gy-o6i" firstAttribute="top" secondItem="a4y-Zb-9Yj" secondAttribute="bottom" constant="-1" id="oQ2-1c-m1Q"/>
+                            <constraint firstItem="HMk-sf-hH2" firstAttribute="leading" secondItem="zbH-DV-OYT" secondAttribute="leading" constant="11" id="rgU-Gq-hlh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Cm8-Lr-PZb"/>
+                                <exclude reference="eGT-gN-R1s"/>
+                                <exclude reference="AOQ-kM-SXe"/>
+                                <exclude reference="HMk-sf-hH2"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7OC-c3-nhV"/>
+                                <exclude reference="rgU-Gq-hlh"/>
+                                <exclude reference="El5-MD-zVp"/>
+                                <exclude reference="gA5-6J-5lL"/>
                                 <exclude reference="S6E-4e-I63"/>
                                 <exclude reference="8Zr-A0-Vkf"/>
                                 <exclude reference="WqY-Ja-O0Y"/>
+                                <exclude reference="KtH-xN-m1X"/>
+                                <exclude reference="QFw-1X-ZKO"/>
                                 <exclude reference="QJ1-Q9-00A"/>
                                 <exclude reference="RhI-Jv-nfc"/>
                                 <exclude reference="SWR-PY-HF9"/>
@@ -712,10 +755,19 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Cm8-Lr-PZb"/>
+                                <include reference="eGT-gN-R1s"/>
+                                <include reference="AOQ-kM-SXe"/>
+                                <include reference="HMk-sf-hH2"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7OC-c3-nhV"/>
+                                <include reference="rgU-Gq-hlh"/>
+                                <include reference="El5-MD-zVp"/>
+                                <include reference="gA5-6J-5lL"/>
                                 <include reference="8Zr-A0-Vkf"/>
                                 <include reference="WqY-Ja-O0Y"/>
+                                <include reference="KtH-xN-m1X"/>
+                                <include reference="QFw-1X-ZKO"/>
                                 <include reference="QJ1-Q9-00A"/>
                                 <include reference="RhI-Jv-nfc"/>
                                 <include reference="SWR-PY-HF9"/>
@@ -725,12 +777,13 @@
                     <navigationItem key="navigationItem" id="CPo-Bx-rfy"/>
                     <connections>
                         <outlet property="boardView" destination="oKZ-uY-cQr" id="Vad-z9-BtG"/>
+                        <outlet property="currentgamelabel" destination="eGT-gN-R1s" id="aFl-yj-f95"/>
                         <outlet property="networklabel" destination="Cm8-Lr-PZb" id="vZ7-DL-kJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGc-75-2MU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317.5" y="78"/>
+            <point key="canvasLocation" x="2317.5" y="45"/>
         </scene>
     </scenes>
 </document>

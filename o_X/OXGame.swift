@@ -10,8 +10,11 @@ import Foundation
 
 class OXGame{
     var board = [CellType](count:9, repeatedValue: CellType.Empty)
-    private var startType = CellType.X
+    var winnerType = CellType.X
     var turntype = CellType.X
+    
+    var ID:Int = 0
+    var host:String = "" 
     
     init()  {
         //we are simulating setting our board from the internet
@@ -31,7 +34,7 @@ class OXGame{
         
     }
     
-    private func deserialiseBoard(b: String) -> [CellType] {
+    func deserialiseBoard(b: String) -> [CellType] {
         var tempboard: [CellType] = []
         for letter in b.characters {
             if letter == "o" {
@@ -48,7 +51,7 @@ class OXGame{
         
     }
     
-    private func serialiseBoard() -> String {
+    func serialiseBoard() -> String {
         var tempstring = ""
         for cell in self.board {
             if cell == CellType.O {
@@ -78,10 +81,12 @@ class OXGame{
     func whoseTurn ()-> CellType {
         if (self.turntype == CellType.X) {
             self.turntype = CellType.O
+            self.winnerType = CellType.X
             return CellType.X
         }
         else {
             self.turntype = CellType.X
+            self.winnerType = CellType.O
             return CellType.O
         }
         
@@ -91,6 +96,10 @@ class OXGame{
         if (self.state() == OXGameState.InProgress) {
             board[x] = turntype
         }
+    }
+    
+    func undo(x:Int) {
+        board[x] = CellType.Empty
     }
 
     func gameWon () -> Bool {

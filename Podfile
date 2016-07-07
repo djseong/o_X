@@ -2,9 +2,16 @@
 # platform :ios, '9.0'
 
 target 'o_X' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    
+    source 'https://github.com/CocoaPods/Specs.git'
+    platform :ios, '9.0'
+    # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
 
-  # Pods for o_X
+    # Pods for o_X
+    pod 'Alamofire', '~> 3.4'
+    pod 'SwiftyJSON'
 
 end
+
+
